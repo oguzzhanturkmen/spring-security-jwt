@@ -1,10 +1,11 @@
-package com.spring_security.jwt_practice.domain.enums;
+package com.spring_security.jwt_practice.domain;
 
-import com.spring_security.jwt_practice.domain.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import com.spring_security.jwt_practice.domain.enums.UserRole;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -26,12 +27,12 @@ public class User {
     private String LastName;
 
     @Column (length = 25, nullable = false, unique = true)
-    private String userName;
+    private String username;
     @Column(length = 255, nullable = false) // length 255 olma sebebi; password
     private String password;
     @JoinTable( name="tbl_user_role",
             joinColumns = @JoinColumn(name= "user_id"),
             inverseJoinColumns = @JoinColumn (name="role_id"))
     @ManyToMany (fetch=FetchType.EAGER)
-    private Set<Role> roles = new HashSet<>;
+    private Set<Role> roles = new HashSet<>();
 }

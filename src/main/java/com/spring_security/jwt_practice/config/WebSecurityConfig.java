@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 ).permitAll()
                 .anyRequest().authenticated();
 
-        http.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authTokenFilterr(), UsernamePasswordAuthenticationFilter.class);
 
 
     }
@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthTokenFilter authTokenFilter() {
+    public AuthTokenFilter authTokenFilterr() {
         return new AuthTokenFilter();
     }
 
